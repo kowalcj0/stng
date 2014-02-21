@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Suite" parallel="tests">
+    <parameter name="hubURL" value="http://localhost:4444/wd/hub"></parameter>
+    <listeners>
+        <listener class-name="organized.chaos.RemoteWebDriverListener">
+        </listener>
+    </listeners>
+    <test name="Tests in FF">
+        <parameter name="browserName" value="firefox"></parameter>
+        <!-- Run all tests from specified package -->
+        <packages>
+            <package name="organized.chaos.tests"></package>
+        </packages>
+        <!-- If you want to be more specific, replace this with a list of test classes you'd like to run -->
+        <!--
+        <classes>
+            <class name="organized.chaos.tests.FirstThreadLocalDemo" />
+            <class name="organized.chaos.tests.SecondThreadLocalDemo" />
+        </classes>-->
+    </test>
+    <test name="Tests in Chrome">
+        <parameter name="browserName" value="chrome"></parameter>
+        <packages>
+            <!-- Run all tests from specified package -->
+            <package name="organized.chaos.tests"></package>
+        </packages>
+    </test>
+</suite>
