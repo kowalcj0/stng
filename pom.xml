@@ -2,15 +2,16 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <groupId>com.yelllabs</groupId>
-    <artifactId>techtest</artifactId>
+    <groupId>org.seniorqa</groupId>
+    <artifactId>stng</artifactId>
     <version>1.0</version>
-    <name>A tech test for Automation Testers build using Java with Spring, Selenium and jBehvae</name>
-    <description>A tech test for Automation Testers build using Java with Spring, Selenium and jBehvae</description>
+    <name>STNG</name>
+    <description>A project that runs tests in parallel using Selenium Grid & TestNG</description>
 
     <properties>
         <org.seleniumhq.selenium.selenium-java.version>2.39.0</org.seleniumhq.selenium.selenium-java.version>
         <org.testng.testng.version>6.8.7</org.testng.testng.version>
+        <org.apache.maven.plugins.surefire-testng.version>2.16</org.apache.maven.plugins.surefire-testng.version>
     </properties>
 
     <dependencies>
@@ -19,12 +20,21 @@
             <artifactId>selenium-java</artifactId>
             <version>${org.seleniumhq.selenium.selenium-java.version}</version>
         </dependency>
-
         <dependency>
             <groupId>org.testng</groupId>
             <artifactId>testng</artifactId>
             <version>${org.testng.testng.version}</version>
         </dependency>
-
     </dependencies>
+<!--
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>surefire-testng</artifactId>
+                <version>${org.apache.maven.plugins.surefire-testng.version}</version>
+                <goals  />
+            </plugin>
+        </plugins>
+    </build>-->
 </project>

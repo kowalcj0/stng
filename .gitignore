@@ -3,3 +3,4 @@ target
 *.tmp
 *.log
 *.iml
+plugin.xml
