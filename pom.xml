@@ -9,10 +9,11 @@
     <description>A project that runs tests in parallel using Selenium Grid and TestNG</description>
 
     <properties>
-        <org.seleniumhq.selenium.selenium-java.version>2.39.0</org.seleniumhq.selenium.selenium-java.version>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <org.seleniumhq.selenium.selenium-java.version>2.40.0</org.seleniumhq.selenium.selenium-java.version>
         <org.testng.testng.version>6.8.7</org.testng.testng.version>
         <org.apache.maven.plugins.surefire-testng.version>2.16</org.apache.maven.plugins.surefire-testng.version>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <com.lazerycode.selenium.version>1.0.0</com.lazerycode.selenium.version>
     </properties>
 
     <dependencies>
@@ -27,33 +28,41 @@
             <version>${org.testng.testng.version}</version>
         </dependency>
         <dependency>
+            <!--
+            A handy plugin that allows you to download driver binaries automatically
+            To download desired driver binaries, call the plugin like that:
+            mvn clean com.lazerycode.selenium:driver-binary-downloader-maven-plugin:selenium
+            to
+            src: http://ardesco.lazerycode.com/index.php/2012/08/introducing-the-driver-binary-downloader-maven-plugin-for-selenium/
+            -->
             <groupId>com.lazerycode.selenium</groupId>
             <artifactId>driver-binary-downloader-maven-plugin</artifactId>
-            <version>1.0.0</version>
+            <version>${com.lazerycode.selenium.version}</version>
         </dependency>
     </dependencies>
 
     <build>
         <sourceDirectory>src/main/java</sourceDirectory>
-        <testSourceDirectory>src/tests</testSourceDirectory>
+        <testSourceDirectory>src/test/java</testSourceDirectory>
         <testResources>
             <testResource>
-                <directory>src/resources</directory>
+                <directory>src/test/resources</directory>
             </testResource>
         </testResources>
         <plugins>
             <plugin>
                 <groupId>com.lazerycode.selenium</groupId>
                 <artifactId>driver-binary-downloader-maven-plugin</artifactId>
-                <version>1.0.0</version>
+                <version>${com.lazerycode.selenium.version}</version>
                 <configuration>
                     <!-- root directory that downloaded driver binaries will be stored in -->
-                    <rootStandaloneServerDirectory>/tmp/binaries</rootStandaloneServerDirectory>
+                    <rootStandaloneServerDirectory>binaries</rootStandaloneServerDirectory>
                     <!-- Where you want to store downloaded zip files -->
-                    <downloadedZipFileDirectory>/tmp/zips</downloadedZipFileDirectory>
+                    <downloadedZipFileDirectory>binaries/zips</downloadedZipFileDirectory>
+                    <customRepositoryMap>src/main/resources/WebDriverBinariesRepositoryMap.xml</customRepositoryMap>
                     <operatingSystems>
-                        <windows>false</windows>
-                        <linux>true</linux>
+                        <windows>true</windows>
+                        <linux>false</linux>
                         <osx>false</osx>
                     </operatingSystems>
                     <!-- Download 32bit binaries -->
@@ -62,10 +71,13 @@
                     <sixtyFourBitBinaries>true</sixtyFourBitBinaries>
                     <!-- If set to false will download every version available (Other filters will be taken into account -->
                     <onlyGetLatestVersions>true</onlyGetLatestVersions>
+                    <onlyGetDriversForHostOperatingSystem>false</onlyGetDriversForHostOperatingSystem>
+                    <throwExceptionIfSpecifiedVersionIsNotFound>true</throwExceptionIfSpecifiedVersionIsNotFound>
                     <!-- Provide a list of drivers and binary versions to download (this is a map so only one version can be specified per driver) -->
-                    <getSpecificExecutableVersions>
-                        <googlechrome>32</googlechrome>
-                    </getSpecificExecutableVersions>
+                    <!--<getSpecificExecutableVersions>
+                        <googlechrome>2.9</googlechrome>
+                        <internetexplorer>2.40.0</internetexplorer>
+                    </getSpecificExecutableVersions>-->
                     <!-- Number of times to attempt to download each file -->
                     <fileDownloadRetryAttempts>2</fileDownloadRetryAttempts>
                     <!-- Number of ms to wait before timing out when trying to connect to remote server to download file -->
@@ -73,7 +85,7 @@
                     <!-- Number of ms to wait before timing out when trying to read file from remote server -->
                     <fileDownloadReadTimeout>10000</fileDownloadReadTimeout>
                     <!-- Overwrite any existing binaries that have been downloaded and extracted -->
-                    <overwriteFilesThatExist>true</overwriteFilesThatExist>
+                    <overwriteFilesThatExist>false</overwriteFilesThatExist>
                 </configuration>
                 <executions>
                     <execution>
