@@ -17,7 +17,7 @@ class LocalDriverFactory {
             return driver;
         }
         if (browserName.toLowerCase().contains("chrome")) {
-            System.setProperty("webdriver.chrome.driver", "/home/jk/Apps/chromeDriverLinux64/2.9/chromedriver");
+            System.setProperty("webdriver.chrome.driver", "/tmp/binaries/chromeDriverLinux64/2.9/chromedriver");
             driver = new ChromeDriver();
             return driver;
         }
