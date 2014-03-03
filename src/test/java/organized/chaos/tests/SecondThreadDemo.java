@@ -3,7 +3,7 @@ package organized.chaos.tests;
 import org.testng.annotations.Test;
 import organized.chaos.LocalDriverManager;
 
-public class SecondThreadLocalDemo {
+public class SecondThreadDemo {
     @Test
     public void testMethod3() {
         invokeBrowser("http://www.google.com");

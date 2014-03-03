@@ -35,6 +35,41 @@ public class RemoteDriverFactory {
             driver = new RemoteWebDriver(hubUrl, capability);
             return driver;
         }
+        if (browserName.toLowerCase().contains("opera")) {
+            DesiredCapabilities capability = DesiredCapabilities.opera();
+            driver = new RemoteWebDriver(hubUrl, capability);
+            return driver;
+        }
+        if (browserName.toLowerCase().contains("phantomjs")) {
+            DesiredCapabilities capability = DesiredCapabilities.phantomjs();
+            driver = new RemoteWebDriver(hubUrl, capability);
+            return driver;
+        }
+        if (browserName.toLowerCase().contains("android")) {
+            DesiredCapabilities capability = DesiredCapabilities.android();
+            driver = new RemoteWebDriver(hubUrl, capability);
+            return driver;
+        }
+        if (browserName.toLowerCase().contains("htmlUnit")) {
+            DesiredCapabilities capability = DesiredCapabilities.htmlUnit();
+            driver = new RemoteWebDriver(hubUrl, capability);
+            return driver;
+        }
+        if (browserName.toLowerCase().contains("htmlUnitWithJs")) {
+            DesiredCapabilities capability = DesiredCapabilities.htmlUnitWithJs();
+            driver = new RemoteWebDriver(hubUrl, capability);
+            return driver;
+        }
+        if (browserName.toLowerCase().contains("ipad")) {
+            DesiredCapabilities capability = DesiredCapabilities.ipad();
+            driver = new RemoteWebDriver(hubUrl, capability);
+            return driver;
+        }
+        if (browserName.toLowerCase().contains("iphone")) {
+            DesiredCapabilities capability = DesiredCapabilities.iphone();
+            driver = new RemoteWebDriver(hubUrl, capability);
+            return driver;
+        }
         return driver;
     }
 }

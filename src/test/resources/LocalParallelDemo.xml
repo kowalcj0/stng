@@ -13,9 +13,10 @@
         <!-- If you want to be more specific, replace this with a list of test classes you'd like to run -->
         <!--
         <classes>
-            <class name="organized.chaos.tests.FirstThreadLocalDemo" />
-            <class name="organized.chaos.tests.SecondThreadLocalDemo" />
-        </classes>-->
+            <class name="organized.chaos.tests.FirstThreadDemo></class>
+            <class name="organized.chaos.tests.SecondThreadDemo></class>
+        </classes>
+        -->
     </test>
     <test name="Tests in Chrome">
         <parameter name="browserName" value="chrome"></parameter>
