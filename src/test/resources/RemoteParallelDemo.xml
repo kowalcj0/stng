@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="Suite" parallel="tests">
+<suite name="Suite" parallel="tests" time-out="60" >
     <parameter name="hubURL" value="http://localhost:4444/wd/hub"></parameter>
     <listeners>
         <listener class-name="organized.chaos.RemoteWebDriverListener">

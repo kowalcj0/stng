@@ -1,0 +1,1 @@
+Idea of parallel WebDriver execution is based on this article: http://rationaleemotions.wordpress.com/2013/07/31/parallel-webdriver-executions-using-testng/

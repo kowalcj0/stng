@@ -15,6 +15,7 @@
         <org.apache.maven.plugins.surefire-testng.version>2.16</org.apache.maven.plugins.surefire-testng.version>
         <com.lazerycode.selenium.version>1.0.0</com.lazerycode.selenium.version>
         <googlchromedriverbinary.version>2.9</googlchromedriverbinary.version>
+        <org.jbehave.core.version>3.9.1</org.jbehave.core.version>
     </properties>
 
     <dependencies>
@@ -27,6 +28,11 @@
             <groupId>org.testng</groupId>
             <artifactId>testng</artifactId>
             <version>${org.testng.testng.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.jbehave</groupId>
+            <artifactId>jbehave-core</artifactId>
+            <version>${org.jbehave.core.version}</version>
         </dependency>
         <dependency>
             <!--
@@ -47,7 +53,7 @@
         </dependency>
     </dependencies>
 
-    <build>
+<!--    <build>
         <sourceDirectory>src/main/java</sourceDirectory>
         <testSourceDirectory>src/test/java</testSourceDirectory>
         <testResources>
@@ -55,7 +61,7 @@
                 <directory>src/test/resources</directory>
             </testResource>
         </testResources>
-    </build>
+    </build>-->
 
     <profiles>
         <!--
