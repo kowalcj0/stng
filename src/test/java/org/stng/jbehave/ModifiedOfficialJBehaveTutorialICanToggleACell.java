@@ -19,7 +19,7 @@ import static org.jbehave.core.io.CodeLocations.codeLocationFromClass;
 
 /**
  * This class allows to run JBehave stories as JUnit tests
- *
+ * I used http://jbehave.org/reference/stable/getting-started.html as a basis.
  * */
 public class ModifiedOfficialJBehaveTutorialICanToggleACell extends JUnitStories {
 
