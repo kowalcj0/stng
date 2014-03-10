@@ -11,6 +11,7 @@ import org.jbehave.core.steps.InjectableStepsFactory;
 import org.jbehave.core.steps.InstanceStepsFactory;
 import org.stng.tests.steps.JBehaveFirstStorySteps;
 import org.stng.tests.steps.JBehaveSecondStorySteps;
+import organized.chaos.LocalDriverManager;
 
 import java.util.List;
 
@@ -33,6 +34,7 @@ public class ModifiedOfficialJBehaveTutorialICanToggleACell extends JUnitStories
     @Override
     public InjectableStepsFactory stepsFactory() {
         // varargs, can have more that one steps classes
+
         return new InstanceStepsFactory(configuration(), new JBehaveFirstStorySteps(), new JBehaveSecondStorySteps());
     }
 

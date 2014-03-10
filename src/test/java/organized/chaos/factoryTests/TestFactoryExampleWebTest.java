@@ -1,4 +1,4 @@
-package organized.chaos.tests;
+package organized.chaos.factoryTests;
 
 import org.testng.annotations.Test;
 import organized.chaos.LocalDriverManager;

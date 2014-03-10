@@ -11,8 +11,11 @@ public class LocalWebDriverListener implements IInvokedMethodListener {
     public void beforeInvocation(IInvokedMethod method, ITestResult testResult) {
         if (method.isTestMethod()) {
             String browserName = method.getTestMethod().getXmlTest().getLocalParameters().get("browserName");
+            System.out.println("Creating an instance of: " + browserName + " driver!");
             WebDriver driver = LocalDriverFactory.createInstance(browserName);
             LocalDriverManager.setWebDriver(driver);
+        } else {
+            System.out.println("method is NOT a testMethod!!!!!");
         }
     }
 

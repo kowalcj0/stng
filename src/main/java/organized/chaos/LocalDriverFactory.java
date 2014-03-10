@@ -9,24 +9,24 @@ import org.openqa.selenium.ie.InternetExplorerDriver;
 class LocalDriverFactory {
     static WebDriver createInstance(String browserName) {
         WebDriver driver = null;
-        if (browserName.toLowerCase().contains("firefox")) {
+        if (browserName.equalsIgnoreCase("firefox")) {
             driver = new FirefoxDriver();
             return driver;
         }
-        if (browserName.toLowerCase().contains("internet")) {
+        if (browserName.equalsIgnoreCase("internet")) {
             driver = new InternetExplorerDriver();
             return driver;
         }
-        if (browserName.toLowerCase().contains("chrome")) {
+        if (browserName.equalsIgnoreCase("chrome")) {
             System.setProperty("webdriver.chrome.driver", "binaries/linux/googlechrome/64bit/2.9/chromedriver");
             driver = new ChromeDriver();
             return driver;
         }
-        if (browserName.toLowerCase().contains("htmlUnit")) {
+        if (browserName.equalsIgnoreCase("htmlUnit")) {
             driver = new HtmlUnitDriver();
             return driver;
         }
-        if (browserName.toLowerCase().contains("htmlUnitWithJs")) {
+        if (browserName.equalsIgnoreCase("htmlUnitWithJs")) {
             driver = new HtmlUnitDriver(true);
             return driver;
         }

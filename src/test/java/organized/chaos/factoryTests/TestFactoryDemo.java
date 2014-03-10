@@ -1,4 +1,4 @@
-package organized.chaos.tests;
+package organized.chaos.factoryTests;
 
 import org.testng.annotations.Factory;
 
@@ -8,11 +8,11 @@ import org.testng.annotations.Factory;
 public class TestFactoryDemo {
     @Factory
     public Object[] createInstances() {
-        int iterations = 3;
+        int iterations = 2;
         Object[] result = new Object[iterations];
         for (int i = 0; i < iterations; i++) {
             result[i] = new TestFactoryExampleWebTest(i);
-            System.out.println(result[i]);
+            System.out.println("Test factory hash: " + result[i]);
         }
         return result;
     }
