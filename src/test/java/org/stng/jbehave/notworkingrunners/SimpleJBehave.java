@@ -1,10 +1,10 @@
-package org.stng.tests.notworkingrunners;
+package org.stng.jbehave.notworkingrunners;
 
 import org.jbehave.core.io.StoryFinder;
 import org.jbehave.core.junit.JUnitStories;
 import org.jbehave.core.steps.InjectableStepsFactory;
 import org.jbehave.core.steps.InstanceStepsFactory;
-import org.stng.tests.steps.JBehaveFirstStorySteps;
+import org.stng.jbehave.steps.JBehaveFirstStorySteps;
 
 import java.util.List;
 

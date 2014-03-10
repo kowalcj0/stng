@@ -4,6 +4,10 @@ import org.openqa.selenium.Capabilities;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.remote.RemoteWebDriver;
 
+/**
+ * Author: Confusions Personified
+ * src: http://rationaleemotions.wordpress.com/2013/07/31/parallel-webdriver-executions-using-testng/
+ */
 public class LocalDriverManager {
 
     private static ThreadLocal<WebDriver> webDriver = new ThreadLocal<WebDriver>();
@@ -12,7 +16,7 @@ public class LocalDriverManager {
         return webDriver.get();
     }
 
-    static void setWebDriver(WebDriver driver) {
+    public static void setWebDriver(WebDriver driver) {
         webDriver.set(driver);
     }
 

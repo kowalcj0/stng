@@ -1,4 +1,4 @@
-package org.stng.tests.notworkingrunners;
+package org.stng.jbehave.notworkingrunners;
 
 import org.jbehave.core.configuration.Configuration;
 import org.jbehave.core.configuration.MostUsefulConfiguration;
@@ -9,8 +9,8 @@ import org.jbehave.core.reporters.Format;
 import org.jbehave.core.reporters.StoryReporterBuilder;
 import org.jbehave.core.steps.InjectableStepsFactory;
 import org.jbehave.core.steps.InstanceStepsFactory;
-import org.stng.tests.steps.JBehaveFirstStorySteps;
-import org.stng.tests.steps.JBehaveSecondStorySteps;
+import org.stng.jbehave.steps.JBehaveFirstStorySteps;
+import org.stng.jbehave.steps.JBehaveSecondStorySteps;
 
 /**
  * Created by jk on 03/03/14.

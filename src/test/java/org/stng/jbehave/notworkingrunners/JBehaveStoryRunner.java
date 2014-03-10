@@ -1,4 +1,4 @@
-package org.stng.tests.notworkingrunners;
+package org.stng.jbehave.notworkingrunners;
 
 import org.jbehave.core.embedder.Embedder;
 import org.jbehave.core.io.StoryFinder;

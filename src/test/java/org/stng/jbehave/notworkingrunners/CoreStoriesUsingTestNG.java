@@ -1,4 +1,4 @@
-package org.stng.tests.notworkingrunners;
+package org.stng.jbehave.notworkingrunners;
 import java.text.SimpleDateFormat;
 import java.util.List;
 import java.util.Properties;
@@ -27,8 +27,8 @@ import org.jbehave.core.steps.InjectableStepsFactory;
 import org.jbehave.core.steps.InstanceStepsFactory;
 import org.jbehave.core.steps.ParameterConverters;
 import org.junit.Test;
-import org.stng.tests.steps.JBehaveFirstStorySteps;
-import org.stng.tests.steps.JBehaveSecondStorySteps;
+import org.stng.jbehave.steps.JBehaveFirstStorySteps;
+import org.stng.jbehave.steps.JBehaveSecondStorySteps;
 
 import static org.jbehave.core.io.CodeLocations.codeLocationFromPath;
 import static org.jbehave.core.reporters.Format.*;

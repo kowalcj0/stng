@@ -45,12 +45,7 @@
             <groupId>com.lazerycode.selenium</groupId>
             <artifactId>driver-binary-downloader-maven-plugin</artifactId>
             <version>${com.lazerycode.selenium.version}</version>
-        </dependency><!--
-        <dependency>
-            <groupId>net.sourceforge.htmlunit</groupId>
-            <artifactId>htmlunit</artifactId>
-            <version>2.13</version>
-        </dependency>-->
+        </dependency>
         <dependency>
             <!--Solves the issue with FF not starting
                 more info: https://code.google.com/p/selenium/issues/detail?id=5245#c6
@@ -61,7 +56,8 @@
         </dependency>
     </dependencies>
 
-<!--    <build>
+<!--
+        <build>
         <sourceDirectory>src/main/java</sourceDirectory>
         <testSourceDirectory>src/test/java</testSourceDirectory>
         <testResources>
@@ -69,7 +65,8 @@
                 <directory>src/test/resources</directory>
             </testResource>
         </testResources>
-    </build>-->
+    </build>
+-->
 
     <profiles>
         <!--
@@ -83,7 +80,7 @@
                 <activeByDefault>true</activeByDefault>
             </activation>
             <properties>
-                <testNG.test.suite.XML.file>src/test/resources/LocalTestfactoryParallelDemo.xml</testNG.test.suite.XML.file>
+                <testNG.test.suite.XML.file>src/test/resources/organized.chaos.LocalWebDriverListener.xml</testNG.test.suite.XML.file>
             </properties>
             <build>
                 <plugins>
@@ -101,10 +98,13 @@
                 </plugins>
             </build>
         </profile>
+
+
+
         <profile>
             <id>remoteRunner</id>
             <properties>
-                <testNG.test.suite.XML.file>src/test/resources/RemoteParallelDemo.xml</testNG.test.suite.XML.file>
+                <testNG.test.suite.XML.file>src/test/resources/organized.chaos.RemoteWebDriverListener.xml</testNG.test.suite.XML.file>
             </properties>
             <build>
                 <plugins>
@@ -122,13 +122,12 @@
                 </plugins>
             </build>
         </profile>
+
+
         <profile>
             <id>localJBehaveRunner</id>
-            <activation>
-                <activeByDefault>true</activeByDefault>
-            </activation>
             <properties>
-                <testNG.test.suite.XML.file>src/test/resources/LocalJBehaveRunnerParallelDemo.xml</testNG.test.suite.XML.file>
+                <testNG.test.suite.XML.file>src/test/resources/org.stng.jbehave.LocalJbehaveWebDriverListener.xml</testNG.test.suite.XML.file>
             </properties>
             <build>
                 <plugins>
@@ -146,13 +145,12 @@
                 </plugins>
             </build>
         </profile>
+
+
         <profile>
             <id>localTestFactoryRunner</id>
-            <activation>
-                <activeByDefault>true</activeByDefault>
-            </activation>
             <properties>
-                <testNG.test.suite.XML.file>src/test/resources/LocalTestfactoryParallelDemo.xml</testNG.test.suite.XML.file>
+                <testNG.test.suite.XML.file>src/test/resources/org.stng.testng.testFactory.xml</testNG.test.suite.XML.file>
             </properties>
             <build>
                 <plugins>
@@ -170,6 +168,8 @@
                 </plugins>
             </build>
         </profile>
+
+
         <profile>
             <!-- use this profile to download driver binaries before running your tests locally -->
             <id>downloadDriverBinaries</id>
@@ -184,7 +184,7 @@
                             <rootStandaloneServerDirectory>binaries</rootStandaloneServerDirectory>
                             <!-- Where you want to store downloaded zip files -->
                             <downloadedZipFileDirectory>binaries/zips</downloadedZipFileDirectory>
-                            <customRepositoryMap>src/main/resources/WebDriverBinariesRepositoryMap.xml</customRepositoryMap>
+                            <customRepositoryMap>src/main/resources/RepositoryMapForMavenWebDriverBinaryDownloaderPlugin.xml</customRepositoryMap>
                             <operatingSystems>
                                 <windows>false</windows>
                                 <linux>true</linux>

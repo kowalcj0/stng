@@ -1,4 +1,4 @@
-package organized.chaos.factoryTests;
+package org.stng.testng.testFactory;
 
 import org.testng.annotations.Test;
 import organized.chaos.LocalDriverManager;
@@ -14,8 +14,9 @@ public class TestFactoryExampleWebTest {
 
     @Test
     public void testServer() {
-
-        LocalDriverManager.getDriver().get("http://google.pl");
+        if ( LocalDriverManager.getDriver() != null) {
+            LocalDriverManager.getDriver().get("http://google.pl");
+        }
         System.out.println("I'm running test: " + m_numberOfTimes);
         for (int i = 0; i < m_numberOfTimes; i++) {
             // access the web page

@@ -7,13 +7,13 @@
     <test name="Tests in Chrome">
         <parameter name="browserName" value="chrome" />
         <classes>
-            <class name="organized.chaos.factoryTests.TestFactoryDemo" />
+            <class name="org.stng.testng.testFactory.TestFactoryDemo" />
         </classes>
     </test>
     <test name="Tests in FF">
         <parameter name="browserName" value="firefox" />
         <classes>
-            <class name="organized.chaos.factoryTests.TestFactoryDemo" />
+            <class name="org.stng.testng.testFactory.TestFactoryDemo" />
         </classes>
     </test>
 </suite>

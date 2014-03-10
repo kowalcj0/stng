@@ -13,8 +13,8 @@
         <!-- If you want to be more specific, replace this with a list of test classes you'd like to run -->
         <!--
         <classes>
-            <class name="organized.chaos.tests.FirstThreadDemo></class>
-            <class name="organized.chaos.tests.SecondThreadDemo></class>
+            <class name="organized.chaos.tests.FirstThreadDemo" />
+            <class name="organized.chaos.tests.SecondThreadDemo" />
         </classes>
         -->
     </test>

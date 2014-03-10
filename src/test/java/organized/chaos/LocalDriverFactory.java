@@ -6,8 +6,12 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.htmlunit.HtmlUnitDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 
-class LocalDriverFactory {
-    static WebDriver createInstance(String browserName) {
+/**
+ * Author: Confusions Personified
+ * src: http://rationaleemotions.wordpress.com/2013/07/31/parallel-webdriver-executions-using-testng/
+ */
+public class LocalDriverFactory {
+    public static WebDriver createInstance(String browserName) {
         WebDriver driver = null;
         if (browserName.equalsIgnoreCase("firefox")) {
             driver = new FirefoxDriver();

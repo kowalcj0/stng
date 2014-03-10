@@ -1,4 +1,4 @@
-package organized.chaos.factoryTests;
+package org.stng.testng.testFactory;
 
 import org.testng.annotations.Factory;
 

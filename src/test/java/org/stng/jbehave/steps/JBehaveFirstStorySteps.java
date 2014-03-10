@@ -1,8 +1,6 @@
-package org.stng.tests.steps;
+package org.stng.jbehave.steps;
 
 import org.jbehave.core.annotations.*;
-import org.openqa.selenium.WebDriver;
-import organized.chaos.LocalDriverManager;
 
 /**
  * Created by jk on 03/03/14.
@@ -12,7 +10,7 @@ public class JBehaveFirstStorySteps {
     @Given("a system state")
     public void theGameIsRunning() {
         System.out.println("I'm running step: a system state");
-        LocalDriverManager.getDriver().get("http://google.pl");
+        //LocalDriverManager.getDriver().get("http://google.pl");
     }
 
     @When("I do something")
