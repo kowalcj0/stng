@@ -22,8 +22,15 @@ public class LocalJbehaveWebDriverListener implements IInvokedMethodListener {
 
             I need to access this parameter here to instantiate a new browser specific WebDriver accordingly
 
-            btw. have a look at the log output:
-            2014-03-11 10:50:16,196 [TestNG] INFO  org.stng.jbehave.LocalJbehaveWebDriverListener - BEFORE GETTING THE DRIVER NAME: JUnitStories.run()[pri:0, instance:run(org.stng.jbehave.ModifiedOfficialJBehaveTutorialICanToggleACell)]
+            When I run a test annotated as a TestNG test then I can access this XML "browser" parameter using
+            method.getTestMethod().getXmlTest().getLocalParameters().get("browserName")
+            If you'd like to check it out for yourself then checkout master branch and run:
+            src/test/resources/org.stng.testng.testFactory.xml
+
+            Here's what getXmlTest() returns when I run JBehave test as JUnit one:
+            ... BEFORE GETTING THE DRIVER NAME: JUnitStories.run()[pri:0, instance:run(org.stng.jbehave.ModifiedOfficialJBehaveTutorialICanToggleACell)]
+            and here's what it returns when I run a test annotated as a TestNG test:
+            ... BEFORE GETTING THE DRIVER NAME: TestFactoryExampleWebTest.testServer()[pri:0, instance:org.stng.testng.testFactory.TestFactoryExampleWebTest@38d060ac]
 
             ps. I tried to use: testResult.getParameters() but this method returns no parameters
             I also tried few other test runners/embedders/etc, check the ones in the master branch
