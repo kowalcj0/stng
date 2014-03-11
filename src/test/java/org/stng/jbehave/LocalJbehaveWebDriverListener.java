@@ -6,45 +6,48 @@ import org.testng.IInvokedMethodListener;
 import org.testng.ITestResult;
 import organized.chaos.LocalDriverFactory;
 import organized.chaos.LocalDriverManager;
+import org.apache.log4j.Logger;
 
-/**
- * This class is a copy of organized.chaos.LocalWebDriverListener
- * I put it here just to use it a new reference point in the org.stng.jbehave.LocalJbehaveWebDriverListener.xml
- * and to experiment with new things etc
- *
- */
+
 public class LocalJbehaveWebDriverListener implements IInvokedMethodListener {
+
+    static Logger log = Logger.getLogger(LocalJbehaveWebDriverListener.class);
 
     @Override
     public void beforeInvocation(IInvokedMethod method, ITestResult testResult) {
-        System.out.println("BEGINING: organized.chaos.LocalWebDriverListener.beforeInvocation");
         if (method.isTestMethod()) {
             /*
-            Problem lies here: method.getTestMethod().getXmlTest() ---->>> this method returns NULL
+            I think that the problem lies here: method.getTestMethod().getXmlTest() ---->>> this method returns NULL
             Probably because method.getTestMethod() returns a JUnitStories object
 
+            I need to access this parameter here to instantiate a new browser specific WebDriver accordingly
+
+            btw. have a look at the log output:
+            2014-03-11 10:50:16,196 [TestNG] INFO  org.stng.jbehave.LocalJbehaveWebDriverListener - BEFORE GETTING THE DRIVER NAME: JUnitStories.run()[pri:0, instance:run(org.stng.jbehave.ModifiedOfficialJBehaveTutorialICanToggleACell)]
+
             ps. I tried to use: testResult.getParameters() but this method returns no parameters
+            I also tried few other test runners/embedders/etc, check the ones in the master branch
+            under org.stng.jbehave.notworkingrunners package (I removed them from this branch for clarity)
             */
-            System.out.println("BEFORE GETTING THE DRIVER NAME " + method.getTestMethod());
+            log.info("BEFORE GETTING THE DRIVER NAME: " + method.getTestMethod());
             String browserName = method.getTestMethod().getXmlTest().getLocalParameters().get("browserName");
-            System.out.println("!!!!!!!!!!!!!!!!! CREATING an instance of: " + browserName + " driver!");
+            log.info("CREATING an instance of: " + browserName + " driver!");
             WebDriver driver = LocalDriverFactory.createInstance(browserName);
             LocalDriverManager.setWebDriver(driver);
         } else {
-            System.out.println("!!!!!!!!!!! METHOD is NOT a testMethod!!!!!");
+            log.warn("beforeInvocation(): METHOD is NOT a testMethod!!!");
         }
-        System.out.println("END: organized.chaos.LocalWebDriverListener.beforeInvocation");
     }
 
     @Override
     public void afterInvocation(IInvokedMethod method, ITestResult testResult) {
-        System.out.println("BEGINING: organized.chaos.LocalWebDriverListener.afterInvocation");
         if (method.isTestMethod()) {
             WebDriver driver = LocalDriverManager.getDriver();
             if (driver != null) {
                 driver.quit();
             }
+        } else {
+            log.warn("afterInvocation(): METHOD is NOT a testMethod!!!");
         }
-        System.out.println("END: organized.chaos.LocalWebDriverListener.afterInvocation");
     }
 }

@@ -1,5 +1,6 @@
 package org.stng.jbehave;
 
+import org.apache.log4j.Logger;
 import org.jbehave.core.configuration.Configuration;
 import org.jbehave.core.configuration.MostUsefulConfiguration;
 import org.jbehave.core.io.LoadFromClasspath;
@@ -23,14 +24,16 @@ import static org.jbehave.core.io.CodeLocations.codeLocationFromClass;
  * */
 public class ModifiedOfficialJBehaveTutorialICanToggleACell extends JUnitStories {
 
+    static Logger log = Logger.getLogger(ModifiedOfficialJBehaveTutorialICanToggleACell.class);
+    
     // Here we specify the configuration, starting from default MostUsefulConfiguration, and changing only what is needed
     @Override
     public Configuration configuration() {
-        System.out.println("org.stng.jbehave.ModifiedOfficialJBehaveTutorialICanToggleACell.configuration");
+        log.info("configuration()");
         return new MostUsefulConfiguration()
                 // where to find the stories
                 .useStoryLoader(new LoadFromClasspath(this.getClass()))
-                        // CONSOLE and TXT reporting
+                 // CONSOLE and TXT reporting
                 .useStoryReporterBuilder(new StoryReporterBuilder().withDefaultFormats().withFormats(Format.CONSOLE, Format.TXT));
     }
 
@@ -38,13 +41,13 @@ public class ModifiedOfficialJBehaveTutorialICanToggleACell extends JUnitStories
     @Override
     public InjectableStepsFactory stepsFactory() {
         // varargs, can have more that one steps classes
-        System.out.println("org.stng.jbehave.ModifiedOfficialJBehaveTutorialICanToggleACell.stepsFactory");
+        log.info("stepsFactory()");
         return new InstanceStepsFactory(configuration(), new JBehaveFirstStorySteps(), new JBehaveSecondStorySteps());
     }
 
     @Override
     protected List<String> storyPaths() {
-        System.out.println("org.stng.jbehave.ModifiedOfficialJBehaveTutorialICanToggleACell.storyPaths");
+        log.info("storyPaths()");
         return new StoryFinder().findPaths(codeLocationFromClass(this.getClass()), "**/*.story", "**/failing_before*.story");
     }
 }

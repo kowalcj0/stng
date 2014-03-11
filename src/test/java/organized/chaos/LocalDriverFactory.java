@@ -34,29 +34,6 @@ public class LocalDriverFactory {
             driver = new HtmlUnitDriver(true);
             return driver;
         }
-        /*
-        These browsers are not supported yet by this project
-        if (browserName.toLowerCase().contains("opera")) {
-            driver = new OperaDriver();
-            return driver;
-        }
-        if (browserName.toLowerCase().contains("phantomjs")) {
-            driver = new ();
-            return driver;
-        }
-        if (browserName.toLowerCase().contains("android")) {
-            driver = new ();
-            return driver;
-        }
-        if (browserName.toLowerCase().contains("ipad")) {
-            driver = new ();
-            return driver;
-        }
-        if (browserName.toLowerCase().contains("iphone")) {
-            driver = new ();
-            return driver;
-        }
-        */
         return driver;
     }
 }
