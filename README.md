@@ -38,3 +38,8 @@ If you need a different one, then change the plugin configuration or download th
 accordingly in the:
 
     organized.chaos.LocalDriverFactory
+
+
+## Interesting posts
+https://groups.google.com/forum/#!search/Can$20i$20call$20JBehave$20java$20class$20in$20TestNG/selenium-users/hgHmQJPwPhg/6KJ8u7VcJD4J
+http://packtlib.packtpub.com/library/9781849515740/pref05

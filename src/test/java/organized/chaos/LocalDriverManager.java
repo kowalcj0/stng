@@ -17,4 +17,4 @@ public class LocalDriverManager {
     public static void setWebDriver(WebDriver driver) {
         webDriver.set(driver);
     }
-}
+} // LocalDriverManager

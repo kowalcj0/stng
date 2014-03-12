@@ -4,3 +4,5 @@ target
 *.log
 *.iml
 plugin.xml
+
+test-output
