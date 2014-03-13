@@ -15,9 +15,9 @@ public class JBehaveSecondStorySteps {
 
     @Given("a system is in a different state")
     public void givenASystemIsInADifferentState() {
-        log.info("I'm running step: a system is in a different state");
-        //LocalDriverManager.getDriver().get("http://google.pl");
-        log.info("givenASystemIsInADifferentState() - Just before opening the page: " + driver.getClass().toString());
+        Thread.currentThread().getStackTrace();
+        final StackTraceElement[] ste = Thread.currentThread().getStackTrace();
+        log.info("I'm running step: a system is in a different state! using: " + driver.getClass().toString() + " / " + ste[ste.length - 1 - 1].getMethodName());
         driver.get("http://google.pl");
     }
 

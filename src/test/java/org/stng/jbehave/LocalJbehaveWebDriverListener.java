@@ -4,9 +4,11 @@ import org.openqa.selenium.WebDriver;
 import org.testng.IInvokedMethod;
 import org.testng.IInvokedMethodListener;
 import org.testng.ITestResult;
+import org.testng.internal.BaseTestMethod;
 import organized.chaos.LocalDriverFactory;
 import organized.chaos.LocalDriverManager;
 import org.apache.log4j.Logger;
+import java.lang.reflect.Field;
 
 
 public class LocalJbehaveWebDriverListener implements IInvokedMethodListener {
@@ -21,7 +23,6 @@ public class LocalJbehaveWebDriverListener implements IInvokedMethodListener {
             log.info("CREATING an instance of: " + browserName + " driver!");
             WebDriver driver = LocalDriverFactory.createInstance(browserName);
             LocalDriverManager.setWebDriver(driver);
-            //LocalDriverManager.getDriver().get("http://google.pl");
             log.info("After instantiating the driver: " + LocalDriverManager.getDriver().getClass().toString());
         } else {
             log.warn("beforeInvocation(): METHOD is NOT a testMethod!!!");
@@ -37,6 +38,15 @@ public class LocalJbehaveWebDriverListener implements IInvokedMethodListener {
             }
         } else {
             log.warn("afterInvocation(): METHOD is NOT a testMethod!!!");
+        }
+        try {
+            BaseTestMethod bm = (BaseTestMethod)testResult.getMethod();
+            Field f = bm.getClass().getSuperclass().getDeclaredField("m_methodName");
+            f.setAccessible(true);
+            log.info(bm.getMethodName() + "." + "CUSTOM NAME: " + testResult.getTestContext().getCurrentXmlTest().getName());
+            f.set(bm, bm.getMethodName() + "." + "CUSTOM NAME: " + testResult.getTestContext().getCurrentXmlTest().getName());
+        } catch (Exception ex) {
+            System.out.println("ex" + ex.getMessage());
         }
     }
 }
