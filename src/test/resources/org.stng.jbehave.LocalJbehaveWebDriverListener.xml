@@ -8,6 +8,7 @@
         <!--
             I can't access the "browserName" parameter inside this listener
         -->
+        <listener class-name="org.testng.Reporter"/>
         <listener class-name="org.stng.jbehave.LocalJbehaveWebDriverListener" />
         <listener class-name="org.stng.jbehave.OnFailureListener" />
 
