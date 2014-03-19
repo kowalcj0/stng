@@ -17,7 +17,9 @@
         <googlchromedriverbinary.version>2.9</googlchromedriverbinary.version>
         <org.jbehave.core.version>3.9.1</org.jbehave.core.version>
         <testNG.test.suite.XML.file>src/test/resources/org.stng.jbehave.LocalJbehaveWebDriverListener.xml</testNG.test.suite.XML.file>
-        <log4j.log4j.version></log4j.log4j.version>
+        <log4j.log4j.version>1.2.17</log4j.log4j.version>
+        <jbehave.site.jbehave-site-resources.version>3.2</jbehave.site.jbehave-site-resources.version>
+        <org.jbehave.jbehave-maven-plugin.version>3.9</org.jbehave.jbehave-maven-plugin.version>
     </properties>
 
     <dependencies>
@@ -59,7 +61,7 @@
         <dependency>
             <groupId>log4j</groupId>
             <artifactId>log4j</artifactId>
-            <version>1.2.17${log4j.log4j.version}</version>
+            <version>${log4j.log4j.version}</version>
         </dependency>
     </dependencies>
 
@@ -81,7 +83,52 @@
                                 <suiteXmlFile>${testNG.test.suite.XML.file}</suiteXmlFile>
                             </suiteXmlFiles>
                             <!--<reportsDirectory>${project.basedir}/reports</reportsDirectory>-->
+                            <!--<disableXmlReport>true</disableXmlReport>-->
                         </configuration>
+                    </plugin>
+
+                    <plugin>
+                        <!--
+                            This plugin is required to extract all the assets (imgs, css, js) required to properly
+                            display JBehave HTML report
+                         -->
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-dependency-plugin</artifactId>
+                        <executions>
+                            <execution>
+                                <id>unpack-resources-core</id>
+                                <phase>process-resources</phase>
+                                <goals>
+                                    <goal>unpack</goal>
+                                </goals>
+                                <configuration>
+                                    <outputDirectory>${project.basedir}/target/jbehave/view</outputDirectory>
+                                    <overWriteReleases>true</overWriteReleases>
+                                    <overWriteSnapshots>true</overWriteSnapshots>
+                                    <excludes>**/*.class</excludes>
+                                    <artifactItems>
+                                        <artifactItem>
+                                            <groupId>org.jbehave</groupId>
+                                            <artifactId>jbehave-core</artifactId>
+                                            <version>${org.jbehave.core.version}</version>
+                                            <classifier>resources</classifier>
+                                            <type>zip</type>
+                                        </artifactItem>
+                                        <artifactItem>
+                                            <groupId>org.jbehave.site</groupId>
+                                            <artifactId>jbehave-site-resources</artifactId>
+                                            <version>${jbehave.site.jbehave-site-resources.version}</version>
+                                            <type>zip</type>
+                                        </artifactItem>
+                                        <artifactItem>
+                                            <groupId>org.jbehave</groupId>
+                                            <artifactId>jbehave-navigator</artifactId>
+                                            <version>${org.jbehave.core.version}</version>
+                                        </artifactItem>
+                                    </artifactItems>
+                                </configuration>
+                            </execution>
+                        </executions>
                     </plugin>
                 </plugins>
             </build>
