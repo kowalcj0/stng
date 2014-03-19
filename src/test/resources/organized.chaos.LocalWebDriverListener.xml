@@ -2,13 +2,13 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="Suite" parallel="tests">
     <listeners>
-        <listener class-name="organized.chaos.LocalWebDriverListener"></listener>
+        <listener class-name="organized.chaos.LocalWebDriverListener" />
     </listeners>
     <test name="Tests in FF">
-        <parameter name="browserName" value="firefox"></parameter>
+        <parameter name="browserName" value="firefox" />
         <!-- Run all tests from specified package -->
         <packages>
-            <package name="organized.chaos.tests"></package>
+            <package name="organized.chaos.tests" />
         </packages>
         <!-- If you want to be more specific, replace this with a list of test classes you'd like to run -->
         <!--
@@ -19,10 +19,10 @@
         -->
     </test>
     <test name="Tests in Chrome">
-        <parameter name="browserName" value="chrome"></parameter>
+        <parameter name="browserName" value="chrome" />
         <packages>
             <!-- Run all tests from specified package -->
-            <package name="organized.chaos.tests"></package>
+            <package name="organized.chaos.tests" />
         </packages>
     </test>
 </suite>

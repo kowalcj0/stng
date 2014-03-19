@@ -1,5 +1,6 @@
 package organized.chaos;
 
+import org.apache.log4j.Logger;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
@@ -11,7 +12,10 @@ import org.openqa.selenium.ie.InternetExplorerDriver;
  * src: http://rationaleemotions.wordpress.com/2013/07/31/parallel-webdriver-executions-using-testng/
  */
 public class LocalDriverFactory {
-    public static WebDriver createInstance(String browserName) {
+
+    static Logger log = Logger.getLogger(LocalDriverFactory.class);
+
+    static WebDriver createInstance(String browserName) {
         WebDriver driver = null;
         if (browserName.equalsIgnoreCase("firefox")) {
             driver = new FirefoxDriver();
@@ -57,6 +61,7 @@ public class LocalDriverFactory {
             return driver;
         }
         */
+        log.info("LocalDriverFactory created driver for: " + browserName);
         return driver;
     }
 }

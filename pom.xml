@@ -16,6 +16,8 @@
         <com.lazerycode.selenium.version>1.0.0</com.lazerycode.selenium.version>
         <googlchromedriverbinary.version>2.9</googlchromedriverbinary.version>
         <org.jbehave.core.version>3.9.1</org.jbehave.core.version>
+        <log4j.log4j.version>1.2.17</log4j.log4j.version>
+        <org.apache.maven.plugins.maven-surefire-plugin.version>2.16</org.apache.maven.plugins.maven-surefire-plugin.version>
     </properties>
 
     <dependencies>
@@ -54,19 +56,12 @@
             <artifactId>xml-apis</artifactId>
             <version>2.0.2</version>
         </dependency>
+        <dependency>
+            <groupId>log4j</groupId>
+            <artifactId>log4j</artifactId>
+            <version>${log4j.log4j.version}</version>
+        </dependency>
     </dependencies>
-
-<!--
-        <build>
-        <sourceDirectory>src/main/java</sourceDirectory>
-        <testSourceDirectory>src/test/java</testSourceDirectory>
-        <testResources>
-            <testResource>
-                <directory>src/test/resources</directory>
-            </testResource>
-        </testResources>
-    </build>
--->
 
     <profiles>
         <!--
@@ -79,99 +74,42 @@
             <activation>
                 <activeByDefault>true</activeByDefault>
             </activation>
-            <properties>
-                <testNG.test.suite.XML.file>src/test/resources/organized.chaos.LocalWebDriverListener.xml</testNG.test.suite.XML.file>
-            </properties>
             <build>
                 <plugins>
                     <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-surefire-plugin</artifactId>
-                        <version>2.16</version>
+                        <version>${org.apache.maven.plugins.maven-surefire-plugin.version}</version>
                         <configuration>
                             <suiteXmlFiles>
-                                <suiteXmlFile>${testNG.test.suite.XML.file}</suiteXmlFile>
+                                <suiteXmlFile>src/test/resources/organized.chaos.LocalWebDriverListener.xml</suiteXmlFile>
                             </suiteXmlFiles>
-                            <!--<reportsDirectory>${project.basedir}/reports</reportsDirectory>-->
                         </configuration>
                     </plugin>
                 </plugins>
             </build>
         </profile>
-
-
-
         <profile>
             <id>remoteRunner</id>
-            <properties>
-                <testNG.test.suite.XML.file>src/test/resources/organized.chaos.RemoteWebDriverListener.xml</testNG.test.suite.XML.file>
-            </properties>
             <build>
                 <plugins>
                     <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-surefire-plugin</artifactId>
-                        <version>2.16</version>
+                        <version>${org.apache.maven.plugins.maven-surefire-plugin.version}</version>
                         <configuration>
                             <suiteXmlFiles>
-                                <suiteXmlFile>${testNG.test.suite.XML.file}</suiteXmlFile>
+                                <suiteXmlFile>src/test/resources/organized.chaos.RemoteWebDriverListener.xml</suiteXmlFile>
                             </suiteXmlFiles>
-                            <!--<reportsDirectory>${project.basedir}/reports</reportsDirectory>-->
                         </configuration>
                     </plugin>
                 </plugins>
             </build>
         </profile>
-
-
         <profile>
-            <id>localJBehaveRunner</id>
-            <properties>
-                <testNG.test.suite.XML.file>src/test/resources/org.stng.jbehave.LocalJbehaveWebDriverListener.xml</testNG.test.suite.XML.file>
-            </properties>
-            <build>
-                <plugins>
-                    <plugin>
-                        <groupId>org.apache.maven.plugins</groupId>
-                        <artifactId>maven-surefire-plugin</artifactId>
-                        <version>2.16</version>
-                        <configuration>
-                            <suiteXmlFiles>
-                                <suiteXmlFile>${testNG.test.suite.XML.file}</suiteXmlFile>
-                            </suiteXmlFiles>
-                            <!--<reportsDirectory>${project.basedir}/reports</reportsDirectory>-->
-                        </configuration>
-                    </plugin>
-                </plugins>
-            </build>
-        </profile>
-
-
-        <profile>
-            <id>localTestFactoryRunner</id>
-            <properties>
-                <testNG.test.suite.XML.file>src/test/resources/org.stng.testng.testFactory.xml</testNG.test.suite.XML.file>
-            </properties>
-            <build>
-                <plugins>
-                    <plugin>
-                        <groupId>org.apache.maven.plugins</groupId>
-                        <artifactId>maven-surefire-plugin</artifactId>
-                        <version>2.16</version>
-                        <configuration>
-                            <suiteXmlFiles>
-                                <suiteXmlFile>${testNG.test.suite.XML.file}</suiteXmlFile>
-                            </suiteXmlFiles>
-                            <!--<reportsDirectory>${project.basedir}/reports</reportsDirectory>-->
-                        </configuration>
-                    </plugin>
-                </plugins>
-            </build>
-        </profile>
-
-
-        <profile>
-            <!-- use this profile to download driver binaries before running your tests locally -->
+            <!--
+                use this profile to download driver binaries before running your tests locally
+            -->
             <id>downloadDriverBinaries</id>
             <build>
                 <plugins>
