@@ -34,7 +34,7 @@ public class RemoteWebDriverListener implements IInvokedMethodListener {
             }
             log.info("Using HUB: " + hubURL + " with: " + browserName );
             WebDriver driver = RemoteDriverFactory.createInstance(hubURL, browserName);
-            LocalDriverManager.setWebDriver(driver);
+            DriverManager.setWebDriver(driver);
         } else {
             log.warn("METHOD is NOT a testMethod!!!!!");
         }
@@ -45,7 +45,7 @@ public class RemoteWebDriverListener implements IInvokedMethodListener {
     public void afterInvocation(IInvokedMethod method, ITestResult testResult) {
         log.info("BEGINNING: organized.chaos.RemoteWebDriverListener.afterInvocation");
         if (method.isTestMethod()) {
-            WebDriver driver = LocalDriverManager.getDriver();
+            WebDriver driver = DriverManager.getDriver();
             if (driver != null) {
                 driver.quit();
             }

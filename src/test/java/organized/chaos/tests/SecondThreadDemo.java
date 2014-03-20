@@ -2,7 +2,7 @@ package organized.chaos.tests;
 
 import org.apache.log4j.Logger;
 import org.testng.annotations.Test;
-import organized.chaos.LocalDriverManager;
+import organized.chaos.DriverManager;
 
 
 public class SecondThreadDemo {
@@ -22,7 +22,7 @@ public class SecondThreadDemo {
 
     private void invokeBrowser(String url) {
         log.info("Thread id = " + Thread.currentThread().getId());
-        log.info("Hashcode of webDriver instance = " + LocalDriverManager.getDriver().hashCode());
-        LocalDriverManager.getDriver().get(url);
+        log.info("Hashcode of webDriver instance = " + DriverManager.getDriver().hashCode());
+        DriverManager.getDriver().get(url);
     }
 }

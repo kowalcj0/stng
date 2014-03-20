@@ -19,7 +19,7 @@ import org.testng.ITestResult;
         if (method.isTestMethod()) {
             String browserName = method.getTestMethod().getXmlTest().getLocalParameters().get("browserName");
             WebDriver driver = LocalDriverFactory.createInstance(browserName);
-            LocalDriverManager.setWebDriver(driver);
+            DriverManager.setWebDriver(driver);
         } else {
             log.warn("METHOD is NOT a testMethod!!!!!");
         }
@@ -30,7 +30,7 @@ import org.testng.ITestResult;
     public void afterInvocation(IInvokedMethod method, ITestResult testResult) {
         log.info("BEGINNING: organized.chaos.LocalWebDriverListener.afterInvocation");
         if (method.isTestMethod()) {
-            WebDriver driver = LocalDriverManager.getDriver();
+            WebDriver driver = DriverManager.getDriver();
             if (driver != null) {
                 driver.quit();
             }

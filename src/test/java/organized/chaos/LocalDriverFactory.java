@@ -21,13 +21,13 @@ public class LocalDriverFactory {
             driver = new FirefoxDriver();
             return driver;
         }
-        if (browserName.equalsIgnoreCase("internet")) {
-            driver = new InternetExplorerDriver();
-            return driver;
-        }
         if (browserName.equalsIgnoreCase("chrome")) {
             System.setProperty("webdriver.chrome.driver", "binaries/linux/googlechrome/64bit/2.9/chromedriver");
             driver = new ChromeDriver();
+            return driver;
+        }
+        if (browserName.equalsIgnoreCase("internet")) {
+            driver = new InternetExplorerDriver();
             return driver;
         }
         if (browserName.equalsIgnoreCase("htmlUnit")) {
