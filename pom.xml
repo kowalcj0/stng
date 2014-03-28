@@ -6,11 +6,17 @@
     <artifactId>stng</artifactId>
     <version>1.0</version>
     <name>STNG</name>
-    <description>A project that runs tests in parallel using Selenium Grid and TestNG</description>
+    <description>
+        An example project that runs JUnit tests in parallel using TestNG.
+        Tests are grouped by the browser in which they're going to be executed.
+        Browsers are driver by Selenium WebDriver.
+        Tests can be executed locally or remotely using Selenium Grid.
+        For more details, please refer to README.md
+    </description>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <org.seleniumhq.selenium.selenium-java.version>2.40.0</org.seleniumhq.selenium.selenium-java.version>
+        <org.seleniumhq.selenium.selenium-server.version>2.40.0</org.seleniumhq.selenium.selenium-server.version>
         <org.testng.testng.version>6.8.7</org.testng.testng.version>
         <org.apache.maven.plugins.surefire-testng.version>2.16</org.apache.maven.plugins.surefire-testng.version>
         <com.lazerycode.selenium.version>1.0.0</com.lazerycode.selenium.version>
@@ -23,18 +29,13 @@
     <dependencies>
         <dependency>
             <groupId>org.seleniumhq.selenium</groupId>
-            <artifactId>selenium-java</artifactId>
-            <version>${org.seleniumhq.selenium.selenium-java.version}</version>
+            <artifactId>selenium-server</artifactId>
+            <version>${org.seleniumhq.selenium.selenium-server.version}</version>
         </dependency>
         <dependency>
             <groupId>org.testng</groupId>
             <artifactId>testng</artifactId>
             <version>${org.testng.testng.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.jbehave</groupId>
-            <artifactId>jbehave-core</artifactId>
-            <version>${org.jbehave.core.version}</version>
         </dependency>
         <dependency>
             <!--
@@ -48,26 +49,13 @@
             <artifactId>driver-binary-downloader-maven-plugin</artifactId>
             <version>${com.lazerycode.selenium.version}</version>
         </dependency>
-        <dependency>
-            <!--Solves the issue with FF not starting
-                more info: https://code.google.com/p/selenium/issues/detail?id=5245#c6
-            -->
-            <groupId>xml-apis</groupId>
-            <artifactId>xml-apis</artifactId>
-            <version>2.0.2</version>
-        </dependency>
-        <dependency>
-            <groupId>log4j</groupId>
-            <artifactId>log4j</artifactId>
-            <version>${log4j.log4j.version}</version>
-        </dependency>
     </dependencies>
 
     <profiles>
         <!--
-        to run test using custom profile simply add -P name_of_the_profile to mvn command
+        to run tests using custom profile simply add -P name_of_the_profile to mvn command
         ie.:
-            mvn clean install -P localRunner
+            mvn clean test -P localRunner
         -->
         <profile>
             <id>localRunner</id>
@@ -108,7 +96,8 @@
         </profile>
         <profile>
             <!--
-                use this profile to download driver binaries before running your tests locally
+            Use this profile to download driver binaries before running your tests locally.
+            Please find more comments explaining how to configure this plugin below.
             -->
             <id>downloadDriverBinaries</id>
             <build>

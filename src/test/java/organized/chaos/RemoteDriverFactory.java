@@ -26,7 +26,6 @@ public class RemoteDriverFactory {
         return RemoteDriverFactory.createInstance(hubUrl,browserName);
     }
 
-
     static RemoteWebDriver createInstance(URL hubUrl, String browserName) {
         RemoteWebDriver driver = null;
         if (browserName.equalsIgnoreCase("firefox")) {
@@ -39,7 +38,7 @@ public class RemoteDriverFactory {
             driver = new RemoteWebDriver(hubUrl, capability);
             return driver;
         }
-        if (browserName.equalsIgnoreCase("internet")) {
+        if (browserName.equalsIgnoreCase("ie")) {
             DesiredCapabilities capability = DesiredCapabilities.internetExplorer();
             driver = new RemoteWebDriver(hubUrl, capability);
             return driver;
@@ -84,7 +83,7 @@ public class RemoteDriverFactory {
             driver = new RemoteWebDriver(hubUrl, capability);
             return driver;
         }
-        log.info("RemoteDriverFactory created driver for: " + browserName);
+        log.info("RemoteDriverFactory created an instance of RemoteWebDriver for: " + browserName);
         return driver;
     }
 }

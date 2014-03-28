@@ -6,6 +6,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.htmlunit.HtmlUnitDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
+import org.openqa.selenium.safari.SafariDriver;
 
 /**
  * Author: Confusions Personified
@@ -26,7 +27,7 @@ public class LocalDriverFactory {
             driver = new ChromeDriver();
             return driver;
         }
-        if (browserName.equalsIgnoreCase("internet")) {
+        if (browserName.equalsIgnoreCase("ie")) {
             driver = new InternetExplorerDriver();
             return driver;
         }
@@ -38,8 +39,13 @@ public class LocalDriverFactory {
             driver = new HtmlUnitDriver(true);
             return driver;
         }
+        if (browserName.toLowerCase().contains("safari")) {
+            driver = new SafariDriver();
+            return driver;
+        }
         /*
-        These browsers are not supported yet by this project
+        These browsers are not supported yet by this project.
+        It's just a matter of adding more browser specific dependencies and it should work fine :)
         if (browserName.toLowerCase().contains("opera")) {
             driver = new OperaDriver();
             return driver;
@@ -61,7 +67,7 @@ public class LocalDriverFactory {
             return driver;
         }
         */
-        log.info("LocalDriverFactory created driver for: " + browserName);
+        log.info("LocalDriverFactory created aa instance of WebDriver for: " + browserName);
         return driver;
     }
 }

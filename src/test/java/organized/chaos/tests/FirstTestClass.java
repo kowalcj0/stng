@@ -7,9 +7,9 @@ import java.util.Random;
 import static org.junit.Assert.assertTrue;
 
 
-public class FirstThreadDemo {
+public class FirstTestClass {
 
-    static Logger log = Logger.getLogger(FirstThreadDemo.class);
+    static Logger log = Logger.getLogger(FirstTestClass.class);
     
     @Test
     public void testMethod1() {
@@ -26,7 +26,7 @@ public class FirstThreadDemo {
 
     private void invokeBrowser(String url) {
         log.info("Thread id = " + Thread.currentThread().getId());
-        log.info("Hashcode of webDriver instance = " + DriverManager.getDriver().hashCode());
+        log.info("Hash code of webDriver instance = " + DriverManager.getDriver().hashCode());
         log.info("Test executed using = " + DriverManager.getBrowserInfo());
         DriverManager.getDriver().get(url);
     }
