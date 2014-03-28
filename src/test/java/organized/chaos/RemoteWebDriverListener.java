@@ -5,10 +5,12 @@ import org.testng.IInvokedMethod;
 import org.testng.IInvokedMethodListener;
 import org.testng.ITestResult;
 
+import java.lang.reflect.Field;
 import java.net.MalformedURLException;
 import java.net.URL;
 
 import org.apache.log4j.Logger;
+import org.testng.internal.BaseTestMethod;
 
 /**
  * A factory of remote WebDrivers. Based on an example taken from:
@@ -45,9 +47,21 @@ public class RemoteWebDriverListener implements IInvokedMethodListener {
     public void afterInvocation(IInvokedMethod method, ITestResult testResult) {
         log.info("BEGINNING: organized.chaos.RemoteWebDriverListener.afterInvocation");
         if (method.isTestMethod()) {
-            WebDriver driver = DriverManager.getDriver();
-            if (driver != null) {
-                driver.quit();
+            String browser = DriverManager.getBrowserInfo();
+            try {
+                BaseTestMethod bm = (BaseTestMethod)testResult.getMethod();
+                Field f = bm.getClass().getSuperclass().getDeclaredField("m_methodName");
+                f.setAccessible(true);
+                String newTestName = testResult.getTestContext().getCurrentXmlTest().getName() + " - " + bm.getMethodName() + " - " + browser;
+                log.info("Renaming test name from: '" + bm.getMethodName() + "' to: '" + newTestName + "'");
+                f.set(bm, newTestName);
+            } catch (Exception ex) {
+                System.out.println("ex" + ex.getMessage());
+            } finally {
+                WebDriver driver = DriverManager.getDriver();
+                if (driver != null) {
+                    driver.quit();
+                }
             }
         }
         log.info("END: organized.chaos.RemoteWebDriverListener.afterInvocation");
