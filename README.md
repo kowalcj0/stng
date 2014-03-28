@@ -11,6 +11,20 @@ Tests can be executed locally or remotely.
 Idea of parallel WebDriver execution is based on this article:
 http://rationaleemotions.wordpress.com/2013/07/31/parallel-webdriver-executions-using-testng/
 
+
+## Reporting
+As we all know reporting is very important.
+That's why in both local and remote WebDriverListeners I'm changing the name of the test method
+that will appear in the final HTML report to one that also contains browser name its version and OS name.
+It's very handy when you need to analyse the results.
+Another very important thing is that, this report contains results from all browsers, which I found problematic when
+trying to run JBehave stories in parallel with TestNG
+
+btw. after running tests from CLI, HTML report is here:
+
+    target/surefire-reports/index.html
+
+
 ## Configuration
 Before you run your tests locally or remotely, you need to:
 
@@ -51,6 +65,12 @@ Chrome:
 or if you want to explicitly specify the profile then:
 
     mvn clean test -P localRunner
+
+
+## How to run tests remotely using Selenium GRID
+First of all prepare your Grid environment, then:
+
+    mvn clean test -P remoteRunner
 
 
 ## How to run tests from IDE
