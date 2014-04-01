@@ -9,22 +9,20 @@
     <description>A project that runs tests in parallel using Selenium Grid and TestNG</description>
 
     <properties>
+        <testNG.test.suite.XML.file>src/test/resources/org.stng.jbehave.LocalJbehaveWebDriverListener.xml</testNG.test.suite.XML.file>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <org.seleniumhq.selenium.selenium-java.version>2.40.0</org.seleniumhq.selenium.selenium-java.version>
+        <org.seleniumhq.selenium.selenium-server.version>2.40.0</org.seleniumhq.selenium.selenium-server.version>
         <org.testng.testng.version>6.8.7</org.testng.testng.version>
-        <org.apache.maven.plugins.surefire-testng.version>2.16</org.apache.maven.plugins.surefire-testng.version>
         <com.lazerycode.selenium.version>1.0.0</com.lazerycode.selenium.version>
         <googlchromedriverbinary.version>2.9</googlchromedriverbinary.version>
         <org.jbehave.core.version>3.9.1</org.jbehave.core.version>
-        <testNG.test.suite.XML.file>src/test/resources/org.stng.jbehave.LocalJbehaveWebDriverListener.xml</testNG.test.suite.XML.file>
-        <log4j.log4j.version></log4j.log4j.version>
     </properties>
 
     <dependencies>
         <dependency>
             <groupId>org.seleniumhq.selenium</groupId>
-            <artifactId>selenium-java</artifactId>
-            <version>${org.seleniumhq.selenium.selenium-java.version}</version>
+            <artifactId>selenium-server</artifactId>
+            <version>${org.seleniumhq.selenium.selenium-server.version}</version>
         </dependency>
         <dependency>
             <groupId>org.testng</groupId>
@@ -48,19 +46,6 @@
             <artifactId>driver-binary-downloader-maven-plugin</artifactId>
             <version>${com.lazerycode.selenium.version}</version>
         </dependency>
-        <dependency>
-            <!--Solves the issue with FF not starting
-                more info: https://code.google.com/p/selenium/issues/detail?id=5245#c6
-            -->
-            <groupId>xml-apis</groupId>
-            <artifactId>xml-apis</artifactId>
-            <version>2.0.2</version>
-        </dependency>
-        <dependency>
-            <groupId>log4j</groupId>
-            <artifactId>log4j</artifactId>
-            <version>1.2.17${log4j.log4j.version}</version>
-        </dependency>
     </dependencies>
 
 
@@ -72,6 +57,19 @@
             </activation>
             <build>
                 <plugins>
+                    <plugin>
+                        <!--
+                        To enable assertions and annotations we need to define the source and target version of the code.
+                        http://maven.apache.org/plugins/maven-compiler-plugin/examples/set-compiler-source-and-target.html
+                        -->
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-compiler-plugin</artifactId>
+                        <version>3.1</version>
+                        <configuration>
+                            <source>1.6</source>
+                            <target>1.6</target>
+                        </configuration>
+                    </plugin>
                     <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-surefire-plugin</artifactId>
