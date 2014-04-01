@@ -5,6 +5,7 @@ import org.testng.ITestResult;
 import org.testng.TestListenerAdapter;
 
 /**
+ * Use this to grab screenshots etc when test fails
  * http://forums.gradle.org/gradle/topics/testng_results_overwritten_when_running_in_parallel
  * https://github.com/iainrose/vanq-java/blob/master/src/test/java/org/vanq/testng/Listener.java
  */

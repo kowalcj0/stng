@@ -5,13 +5,13 @@ import org.jbehave.core.annotations.Given;
 import org.jbehave.core.annotations.Then;
 import org.jbehave.core.annotations.When;
 import org.openqa.selenium.WebDriver;
-import organized.chaos.LocalDriverManager;
+import org.stng.jbehave.DriverManager;
 
 
 public class JBehaveSecondStorySteps {
 
     static Logger log = Logger.getLogger(JBehaveSecondStorySteps.class);
-    WebDriver driver = LocalDriverManager.getDriver();
+    WebDriver driver = DriverManager.getDriver();
 
     @Given("a system is in a different state")
     public void givenASystemIsInADifferentState() {
